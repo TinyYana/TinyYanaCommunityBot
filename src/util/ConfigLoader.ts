@@ -26,6 +26,9 @@ export function createDefaultConfig() {
             },
             leaveService: {
                 channelId: 'default-channel-id'
+            },
+            dynamicVoiceChannel: {
+                triggerChannelId: ''
             }
         };
         fs.writeFileSync('config.json', JSON.stringify(defaultConfig, null, 2), { encoding: 'utf8' });

@@ -7,4 +7,7 @@ export interface BotConfig {
     leaveService: {
         channelId: string;
     }
+    dynamicVoiceChannel: {
+        triggerChannelId: string;
+    };
 }
