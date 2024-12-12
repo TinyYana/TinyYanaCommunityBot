@@ -3,6 +3,7 @@ import * as fs from "fs";
 import JoinLeaveMessageHandler from './services/JoinLeaveMessageHandler';
 import { BotConfig } from './interfaces/BotConfig';
 import { createDefaultConfig, getConfig } from './util/ConfigLoader';
+import { logger } from './util/YanaUtil';
 
 const Token: { token: string } = JSON.parse(fs.readFileSync('token.json', {
     encoding: 'utf8'
@@ -33,7 +34,7 @@ const client = new Client({
 
 client.once('ready', () => {
     createDefaultConfig();
-    console.log(`${client.user?.tag} 啟動!`);
+    logger.log(`${client.user?.tag} 啟動!`);
 });
 
 const joinLeaveMessageHandler = new JoinLeaveMessageHandler(config);
@@ -47,13 +48,13 @@ client.on('guildMemberRemove', async (member) => {
 });
 
 client.on('error', (error) => {
-    console.log(error)
+    logger.error(error)
 });
 process.on('unhandledRejection', (rejection) => {
-    console.log(rejection)
+    logger.error(rejection)
 });
 process.on('uncaughtException', (exception) => {
-    console.log(exception)
+    logger.error(exception)
 });
 
 client.login(Token.token);
