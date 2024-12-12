@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "discord.js": "^14.16.3",
+    "log4js": "^6.9.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
