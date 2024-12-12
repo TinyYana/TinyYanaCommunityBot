@@ -17,20 +17,32 @@ export function getConfig(): BotConfig {
 }
 
 export function createDefaultConfig() {
+    const defaultConfig: BotConfig = {
+        welcomeService: {
+            channelId: 'default-channel-id',
+            title: 'Welcome!',
+            description: 'Welcome to the server!'
+        },
+        leaveService: {
+            channelId: 'default-channel-id'
+        },
+        dynamicVoiceChannel: {
+            triggerChannelId: ''
+        }
+    };
+
     if (!fs.existsSync('config.json')) {
-        const defaultConfig: BotConfig = {
-            welcomeService: {
-                channelId: 'default-channel-id',
-                title: 'Welcome!',
-                description: 'Welcome to the server!'
-            },
-            leaveService: {
-                channelId: 'default-channel-id'
-            },
-            dynamicVoiceChannel: {
-                triggerChannelId: ''
-            }
-        };
         fs.writeFileSync('config.json', JSON.stringify(defaultConfig, null, 2), { encoding: 'utf8' });
+    } else {
+        try {
+            const existingConfigData = fs.readFileSync('config.json', { encoding: 'utf8' });
+            const existingConfig = JSON.parse(existingConfigData) as BotConfig;
+
+            const mergedConfig = { ...defaultConfig, ...existingConfig };
+            fs.writeFileSync('config.json', JSON.stringify(mergedConfig, null, 2), { encoding: 'utf8' });
+        } catch (error) {
+            console.error('讀取或合併 config.json 失敗:', error);
+            process.exit(1);
+        }
     }
 }
