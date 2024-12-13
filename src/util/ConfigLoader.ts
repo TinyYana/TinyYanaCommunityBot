@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { BotConfig } from '../interfaces/BotConfig';
+import { logger } from './YanaUtil';
 
 let cachedConfig: BotConfig | null = null;
 
@@ -9,7 +10,7 @@ export function getConfig(): BotConfig {
             const configData = fs.readFileSync('config.json', { encoding: 'utf8' });
             cachedConfig = JSON.parse(configData) as BotConfig;
         } catch (error) {
-            console.error('讀取 config.json 失敗:', error);
+            logger.error('讀取 config.json 失敗:', error);
             process.exit(1);
         }
     }
@@ -41,7 +42,7 @@ export function createDefaultConfig() {
             const mergedConfig = { ...defaultConfig, ...existingConfig };
             fs.writeFileSync('config.json', JSON.stringify(mergedConfig, null, 2), { encoding: 'utf8' });
         } catch (error) {
-            console.error('讀取或合併 config.json 失敗:', error);
+            logger.error('讀取或合併 config.json 失敗:', error);
             process.exit(1);
         }
     }
