@@ -1,6 +1,7 @@
 import { VoiceState, VoiceChannel, GuildMember } from "discord.js";
 import { BotConfig } from "../interfaces/BotConfig";
 import { getConfig } from "../util/ConfigLoader";
+import { logger } from "../util/YanaUtil";
 
 export default class DynamicVoiceChannelManager {
     private readonly triggerChannelId: string;
@@ -88,7 +89,7 @@ export default class DynamicVoiceChannelManager {
                 }
             }
         } catch (error) {
-            console.error("動態語音頻道處理錯誤:", error);
+            logger.error("動態語音頻道處理錯誤:", error);
         }
     }
 }
