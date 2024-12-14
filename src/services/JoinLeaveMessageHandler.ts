@@ -1,6 +1,6 @@
 import Discord, { EmbedBuilder, Guild, GuildMember, PartialGuildMember } from "discord.js";
 import { BotConfig } from "../interfaces/BotConfig";
-import { fetchTextChannel } from "../utils/YanaUtil";
+import { fetchTextChannel, logger } from "../utils/YanaUtil";
 
 export default class JoinLeaveMessageHandler {
     constructor(private readonly config: BotConfig) { }
@@ -21,7 +21,7 @@ export default class JoinLeaveMessageHandler {
                 embeds: [embed]
             });
         } catch (error) {
-            console.error('Failed to send welcome message:', error);
+            logger.error('傳送歡迎訊息失敗:', error);
         }
     }
 
@@ -35,7 +35,7 @@ export default class JoinLeaveMessageHandler {
                 content: quitMessage
             });
         } catch (error) {
-            console.error('Failed to send quit message:', error);
+            logger.error('傳送退出訊息失敗:', error);
         }
     }
 }
