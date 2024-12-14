@@ -6,17 +6,17 @@ export async function fetchTextChannel(guild: Guild, channelId: string) {
     if (channel?.isTextBased()) {
         return channel;
     }
-    logger.error(`Channel with ID ${channelId} is not text-based or not found.`);
+    logger.error(`ID 為 ${channelId} 的頻道不是文字頻道或無法取得頻道。`);
     return null;
 }
 log4js.configure({
     appenders: {
         out: { type: 'stdout' },
-        app: { 
-            type: 'dateFile', 
-            filename: 'bot.log', 
+        app: {
+            type: 'dateFile',
+            filename: 'bot.log',
             pattern: '.yyyy-MM-dd',
-            compress: true 
+            compress: true
         }
     },
     categories: {
