@@ -2,8 +2,8 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import * as fs from "fs";
 import JoinLeaveMessageHandler from './services/JoinLeaveMessageHandler';
 import { BotConfig } from './interfaces/BotConfig';
-import { createDefaultConfig, getConfig } from './util/ConfigLoader';
-import { logger } from './util/YanaUtil';
+import { createDefaultConfig, getConfig } from './utils/ConfigLoader';
+import { logger } from './utils/YanaUtil';
 
 const Token: { token: string } = JSON.parse(fs.readFileSync('token.json', {
     encoding: 'utf8'

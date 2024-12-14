@@ -1,6 +1,6 @@
 import Discord, { EmbedBuilder, Guild, GuildMember, PartialGuildMember, TextChannel } from "discord.js";
 import { BotConfig } from "../interfaces/BotConfig";
-import { fetchTextChannel } from "../util/YanaUtil";
+import { fetchTextChannel } from "../utils/YanaUtil";
 
 export default class JoinLeaveMessageHandler {
     constructor(private config: BotConfig) { }

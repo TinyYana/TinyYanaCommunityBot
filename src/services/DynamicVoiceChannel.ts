@@ -1,7 +1,7 @@
 import { VoiceState, VoiceChannel, GuildMember } from "discord.js";
 import { BotConfig } from "../interfaces/BotConfig";
-import { getConfig } from "../util/ConfigLoader";
-import { logger } from "../util/YanaUtil";
+import { getConfig } from "../utils/ConfigLoader";
+import { logger } from "../utils/YanaUtil";
 
 export default class DynamicVoiceChannelManager {
     private readonly triggerChannelId: string;
