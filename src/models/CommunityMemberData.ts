@@ -11,6 +11,10 @@ export class CommunityMemberData implements ICommunityMemberData {
         this.softDelete = softDelete;
     }
 
+    setDelete(status: boolean): void {
+        this.softDelete = status;
+    }
+
     addMoney(amount: number): void {
         this.money += amount;
     }

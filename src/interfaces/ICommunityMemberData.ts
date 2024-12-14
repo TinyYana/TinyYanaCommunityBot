@@ -5,4 +5,5 @@ export interface ICommunityMemberData {
 
     addMoney(amount: number): void;
     removeMoney(amount: number): void;
+    setDelete(status: boolean): void;
 }
