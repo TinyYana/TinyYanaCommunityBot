@@ -1,9 +1,9 @@
-import Discord, { EmbedBuilder, Guild, GuildMember, PartialGuildMember, TextChannel } from "discord.js";
+import Discord, { EmbedBuilder, Guild, GuildMember, PartialGuildMember } from "discord.js";
 import { BotConfig } from "../interfaces/BotConfig";
 import { fetchTextChannel } from "../utils/YanaUtil";
 
 export default class JoinLeaveMessageHandler {
-    constructor(private config: BotConfig) { }
+    constructor(private readonly config: BotConfig) { }
 
     async sendWelcomeMessage(member: GuildMember, guild: Guild) {
         try {
@@ -20,7 +20,6 @@ export default class JoinLeaveMessageHandler {
                 content: `<@${member.id}>`,
                 embeds: [embed]
             });
-            await member.roles.add('859107233702215690');
         } catch (error) {
             console.error('Failed to send welcome message:', error);
         }
