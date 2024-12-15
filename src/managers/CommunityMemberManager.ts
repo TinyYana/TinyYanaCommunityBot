@@ -1,4 +1,4 @@
-import { CommunityMemberData } from "../models/CommunityMemberData";
+import { CommunityMemberData } from "../models/CommunityMember";
 import { logger } from "../utils/YanaUtil";
 
 export class CommunityMemberManager {
