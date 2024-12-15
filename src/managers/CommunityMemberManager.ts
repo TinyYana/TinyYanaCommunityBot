@@ -16,6 +16,17 @@ export class CommunityMemberManager {
         return this.members.get(discordId);
     }
 
+    setMemberActiveStatus(discordId: string, isActive: boolean): boolean {
+        const member = this.getMemberById(discordId);
+        if (member) {
+            member.isActive = isActive;
+            logger.info(`已將成員 ${discordId} 的活躍狀態設為 ${isActive}。`);
+            return true;
+        }
+        logger.warn(`無法設定成員 ${discordId} 的活躍狀態，成員不存在。`);
+        return false;
+    }
+
     setMemberDeletionStatus(discordId: string, isDeleted: boolean): boolean {
         const member = this.getMemberById(discordId);
         if (member) {
