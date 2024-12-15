@@ -1,4 +1,4 @@
-export interface ICommunityMemberData {
+export interface ICommunityMember {
     discordId: string;
     money: number;
     softDelete: boolean;

@@ -1,18 +1,18 @@
-import { CommunityMemberData } from "../models/CommunityMember";
+import { CommunityMember } from "../models/CommunityMember";
 import { logger } from "../utils/YanaUtil";
 
 export class CommunityMemberManager {
-    private readonly members: Map<string, CommunityMemberData>;
+    private readonly members: Map<string, CommunityMember>;
 
     constructor() {
         this.members = new Map();
     }
 
-    addMember(member: CommunityMemberData): void {
+    addMember(member: CommunityMember): void {
         this.members.set(member.discordId, member);
     }
 
-    getMemberById(discordId: string): CommunityMemberData | undefined {
+    getMemberById(discordId: string): CommunityMember | undefined {
         return this.members.get(discordId);
     }
 
@@ -31,7 +31,7 @@ export class CommunityMemberManager {
         const member = this.getMemberById(discordId);
         if (member) {
             member.money += amount;
-            logger.info(`已為成員 ${discordId} 增加金額 ${amount}。新餘額：${member.money}`);   
+            logger.info(`已為成員 ${discordId} 增加金額 ${amount}。新餘額：${member.money}`);
             return true;
         }
         logger.warn(`無法為成員 ${discordId} 增加金額，成員不存在。`);
