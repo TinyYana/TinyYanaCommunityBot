@@ -2,7 +2,7 @@ import { CommunityMemberData } from "../models/CommunityMemberData";
 import { logger } from "../utils/YanaUtil";
 
 export class CommunityMemberManager {
-    private members: Map<string, CommunityMemberData>;
+    private readonly members: Map<string, CommunityMemberData>;
 
     constructor() {
         this.members = new Map();
