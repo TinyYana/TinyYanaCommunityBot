@@ -1,7 +1,7 @@
 export interface ICommunityMember {
     discordId: string;
     money: number;
-    softDelete: boolean;
+    isDeleted: boolean;
     isActive: boolean;
 
     addMoney(amount: number): void;
