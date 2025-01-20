@@ -64,13 +64,13 @@ export class CommunityMemberManager {
         return false;
     }
 
-    getMemberMoney(discordId: string): number | undefined {
+    getMemberMoney(discordId: string): number | false {
         const member = this.getMemberById(discordId);
         if (member) {
             logger.info(`已取得成員 ${discordId} 的餘額：${member.money}`);
             return member.money;
         }
         logger.warn(`無法取得成員 ${discordId} 的餘額，成員不存在。`);
-        return undefined;
+        return false;
     }
 }
