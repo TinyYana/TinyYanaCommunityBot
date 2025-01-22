@@ -61,7 +61,7 @@ class EmbedMessageSender {
                 embeds: [embed]
             });
         } else {
-            await channel.send({embeds: [embed]});
+            await channel.send({ embeds: [embed] });
         }
 
         await interaction.reply({
