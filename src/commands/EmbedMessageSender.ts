@@ -1,5 +1,4 @@
 import { BaseInteraction, Client, SlashCommandBuilder } from "discord.js";
-import { logger } from "../utils/YanaUtil";
 import EmbedSenderModal from "../modals/EmbedSenderModal";
 
 class EmbedMessageSender {
