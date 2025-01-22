@@ -41,8 +41,25 @@ client.once('ready', () => {
 
 const embedMessageSender = new EmbedMessageSender(client);
 client.on('interactionCreate', async (interaction) => {
+    if (interaction.isCommand()) {
+        switch (interaction.commandName) {
+            case "embed":
+                embedMessageSender.openEmbedSenderModal(interaction);
+                break;
+            default:
+                break;
+        }
+        return;
+    }
+
     if (interaction.isModalSubmit()) {
-        embedMessageSender.handleMessageSending(interaction);
+        switch (interaction.customId) {
+            case "embedSender":
+                embedMessageSender.handleMessageSending(interaction);
+                break;
+            default:
+                break;
+        }
     }
 });
 
