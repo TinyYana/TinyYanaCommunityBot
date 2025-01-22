@@ -69,3 +69,4 @@ class EmbedMessageSender {
         });
     }
 }
+export default EmbedMessageSender;
