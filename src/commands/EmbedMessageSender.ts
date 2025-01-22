@@ -1,5 +1,6 @@
-import { Client, SlashCommandBuilder } from "discord.js";
+import { BaseInteraction, Client, SlashCommandBuilder } from "discord.js";
 import { logger } from "../utils/YanaUtil";
+import EmbedSenderModal from "../modals/EmbedSenderModal";
 
 class EmbedMessageSender {
     constructor(client: Client) {
@@ -11,7 +12,15 @@ class EmbedMessageSender {
             client.application?.commands.create(builder);
         });
     }
-    public sendEmbedMessage(message: string): void {
-        // Send message to Discord
+    async openEmbedSenderModal(interaction: BaseInteraction) {
+        if (!interaction.isCommand()) return;
+        const emberSenderModal = new EmbedSenderModal();
+        const modal = await emberSenderModal.createModal();
+        interaction.showModal(modal);
     }
+    convertToBoolean(input: string): boolean {
+        const truthy: string[] = ["true", "True", "1"];
+        return truthy.includes(input);
+    }
+
 }
